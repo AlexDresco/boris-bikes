@@ -13,7 +13,7 @@ describe DockingStation do
   it 'raise another error when reached capacity' do
     bike = Bike.new
     subject.dock(Bike.new)
-    expect {DEFAULT_CAPACITY.times{subject.dock(bike)}}.to raise_error "Reached capacity"
+    expect {DockingStation::DEFAULT_CAPACITY.times{subject.dock(bike)}}.to raise_error "Reached capacity"
   end
 
   describe '#release_bike' do
