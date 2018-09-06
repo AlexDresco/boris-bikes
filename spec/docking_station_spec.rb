@@ -1,7 +1,6 @@
 require 'docking_station'
 
 describe DockingStation do
-<<<<<<< HEAD
   it { is_expected.to respond_to(:dock).with(1).argument }
 
   it { is_expected.to respond_to(:bike) }
@@ -9,16 +8,14 @@ describe DockingStation do
   it 'docks something' do
     bike = Bike.new
     expect(subject.dock(bike)).to eq bike
-=======
-  it { is_expected.to respond_to :release_bike }
-  describe '#release_bike' do
-    it 'gives a working bike' do
-      bike = Bike.new
-      subject.dock_bike(bike)
-      expect(subject.release_bike).to eq bike
-    end
->>>>>>> 72ea57bb19606edc09718c09b0870ab544c42804
   end
+
+  it 'raise another error when reached capacity' do
+    bike = Bike.new
+    subject.dock(Bike.new)
+    expect {subject.dock(bike)}.to raise_error "Reached capacity"
+  end
+
   describe '#release_bike' do
     it 'gives a working bike' do
       bike = Bike.new
@@ -34,6 +31,5 @@ describe DockingStation do
   it "dock bike can store a bike" do
     expect(subject.dock("first_bike")).to eq("first_bike")
   end
-
 
 end
