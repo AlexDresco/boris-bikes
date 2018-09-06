@@ -22,19 +22,8 @@ describe DockingStation do
     expect(subject.dock(bike)).to eq([bike])
   end
 
-  # it 'raise another error when reached capacity' do
-  #   bike = Bike.new
-  #   subject.dock(Bike.new)
-  #   expect {DockingStation::capacity.times{subject.dock(bike)}}.to raise_error "Reached capacity"
-  # end
 
   describe '#release_bike' do
-    # it 'gives a working bike' do
-    #   bike = Bike.new
-    #   subject.dock(bike)
-    #   expect(subject.release_bike).to eq(bike_capacity)
-    #   end
-
       it 'raises an error when there is no bike' do
         expect{ subject.release_bike}.to raise_error "No bikes available"
       end
