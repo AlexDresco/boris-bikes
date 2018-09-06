@@ -1,3 +1,4 @@
+DEFAULT_CAPACITY = 20
 class DockingStation
   attr_reader :bike
 
@@ -22,7 +23,7 @@ class DockingStation
   private
 
   def full?
-    @bike_capacity.count >= 20
+    @bike_capacity.count >= DEFAULT_CAPACITY
   end
 
   def empty?
