@@ -5,16 +5,28 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:bike) }
 
+  it 'creates a constant called capacity when initialized' do
+    expect(subject.capacity).to eq(subject.capacity)
+  end
+
+  describe 'initialization' do
+    it 'has variable capacity' do
+      docking_station = DockingStation.new(50)
+      50.times {docking_station.dock(Bike.new)}
+      expect{docking_station.dock(Bike.new)}.to raise_error 'Reached capacity'
+    end
+  end
+
   it 'docks something' do
     bike = Bike.new
     expect(subject.dock(bike)).to eq([bike])
   end
 
-  it 'raise another error when reached capacity' do
-    bike = Bike.new
-    subject.dock(Bike.new)
-    expect {DockingStation::DEFAULT_CAPACITY.times{subject.dock(bike)}}.to raise_error "Reached capacity"
-  end
+  # it 'raise another error when reached capacity' do
+  #   bike = Bike.new
+  #   subject.dock(Bike.new)
+  #   expect {DockingStation::capacity.times{subject.dock(bike)}}.to raise_error "Reached capacity"
+  # end
 
   describe '#release_bike' do
     # it 'gives a working bike' do
